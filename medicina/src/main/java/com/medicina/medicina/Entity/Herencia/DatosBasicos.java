@@ -1,10 +1,19 @@
 package com.medicina.medicina.Entity.Herencia;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Id;
 
 @MappedSuperclass
-public class DatosBasicos {
+public abstract class DatosBasicos extends Estado{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false, length = 36)
+	private Long Id;
+	
 	
 	@Column(name = "numero_documento", nullable = false, length = 15, unique=true)
 	private String NumeroDocumento;
@@ -26,9 +35,14 @@ public class DatosBasicos {
 
 	@Column(name = "correo", nullable = false, length = 45, unique=true)
 	private String Correo;
-	
-	@Column(name = "estado", nullable = false)
-	private Boolean Estado;
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
 
 	public String getNumeroDocumento() {
 		return NumeroDocumento;
@@ -85,15 +99,12 @@ public class DatosBasicos {
 	public void setCorreo(String correo) {
 		Correo = correo;
 	}
+	
 
-	public Boolean getEstado() {
-		return Estado;
-	}
 
-	public void setEstado(Boolean estado) {
-		Estado = estado;
-	}
+
 	
 	
+
 	
 }

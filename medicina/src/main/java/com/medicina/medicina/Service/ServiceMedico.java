@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.medicina.medicina.Entity.Medicos;
 import com.medicina.medicina.IRepository.IRepositoryMedico;
-import com.medicina.medicina.IService.IServiceMedico;
+import com.medicina.medicina.IService.IMedicoService;
 
 @Service
-public class ServiceMedico implements IServiceMedico{
+public class ServiceMedico implements IMedicoService{
 
 	@Autowired
 	private IRepositoryMedico repository;
@@ -40,10 +40,20 @@ public class ServiceMedico implements IServiceMedico{
 		repository.deleteById(id);
 	}
 
-	@Override
-	public List<Medicos> encontrarVerdaderos() {
+	/*
+	  @Override
+	 
+	public List<Medicos> findByEstado(String estado) {
 		// TODO Auto-generated method stub
-		return repository.encontrarVerdaderos();
+		return null;
 	}
+	*/
+
+	
+
+	
+	
+
+
 	
 }
