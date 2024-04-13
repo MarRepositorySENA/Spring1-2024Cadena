@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
+    <!-- Links  -->
+    <script src="/Frontend Service-security/js/Features/cdn.js"></script>
+<!-- LIBRERIA PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.16.0/pdf-lib.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <div class="container">
+
+
+
+
+        <!-- Modal -->
+        <legend class="Headboard">Bill</legend>
+        <button id="downloadPDFButton" type="button" onclick="  loadDataAndGeneratePDF()" class="btn btn-success">Descargar PDF</button>
+
+        <script src="/Frontend Service-security/js/Features/Butonn.js"></script>
+
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="width: 150%; height: 150%; ">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Record</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="clearData();"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div id="inputdata">
+                                <form class="row g-3 needs-validation" novalidate*class="row g-3 needs-validation"
+                                     novalidate>
+                                    <fieldset class="formulario">
+                                        <legend>Bill</legend>
+                                        <div class="form-group row">
+
+                                            <label class="col-sm-2 col-form-label">code:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="code" id="code" value=""
+                                                    required placeholder="Ingresar code">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Ingrese el codigo.
+                                                </div>
+                                                <br>
+                                            </div>
+
+                                            <label class="col-sm-2 col-form-label">date:</label>
+                                            <div class="col-sm-10">
+                                                <input type="date" class="form-control" name="date" id="date" value=""
+                                                    placeholder="Date ">
+                                                         
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Ingrese el codigo.
+                                                </div>
+                                                <br>
+                                            </div>
+                                                <label class="col-sm-2 col-form-label" for="customer_id">customer:
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="hidden" id="selected_customer_id"
+                                                        name="selected_customer_id" value="">
+                                                    <input type="text" list="customer_id" class="form-control"
+                                                        name="customer_id" id="customer_id">
+
+                                                </div>
+                                            
+
+                                            <label class="col-sm-2 col-form-label">total value:</label>
+                                            <div class="col-sm-10">
+                                                <input type="hidden" name="id_bill" id="id_bill" value="">
+                                                <input type="text" class="form-control" name="totalValue"
+                                                    id="totalValue" value="" required placeholder="Ingresar totalValue" disabled="disabled">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Ingrese el codigo.
+                                                </div>
+                                                <br>
+                                            </div>
+
+                                        <hr>
+                                        <legend>Details:</legend>
+                                        <label class="col-sm-2 col-form-label" for="product_id">product:
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="hidden" id="selected_product_id"
+                                                name="selected_product_id" value="">
+                                            <input type="text" list="product_id" class="form-control"
+                                                name="product_id" id="product_id">
+
+                                        </div>
+
+
+                                            <label class="col-sm-2 col-form-label">amount:</label>
+                                            <div class="col-sm-10">
+                                                <input type="hidden" name="id_details" id="id_details" value="">
+                                                <input type="text" class="form-control" name="amount" id="amount" value=""
+                                                    required placeholder="Ingresar amount">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Ingrese el codigo.
+                                                </div>
+                                                <br>
+                                            </div>
+
+                                         
+
+                                            <label class="col-sm-2 col-form-label">pay value:</label>
+                                            <div class="col-sm-10">
+                                               
+                                                <input type="text" class="form-control" name="payValue" id="payValue" value=""
+                                                    required placeholder="Ingresar payValue" disabled="disabled">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Ingrese el codigo.
+                                                </div>
+                                                <br>
+                                            </div>
+
+                                            
+
+
+                                            <label class="col-sm-2 col-form-label">Estate</label>
+                                            <div class="col-sm-10">
+
+                                                <select class="form-select" id="state">
+                                                    <option selected>--select--</option>
+                                                    <option value="1">asset</option>
+                                                    <option value="0">idle</option>
+                                                </select>
+                                                <br>
+                                            </div>
+
+
+                                        </div>
+                                    </fieldset>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" name="btnCloced" class="btn btn-secondary" data-bs-dismiss="modal"
+                                onclick="clearData()">Close</button>
+                            <br>
+                            <button name="btnAgregar" class="btn btn-primary" type="button" onclick="save()"
+                                data-bs-dismiss="modal">Agregar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped" id="Table">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">Customer</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Pay Value</th>
+                    <th scope="col">Total Value</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Actions</th>
+
+
+                </tr>
+            </thead>
+            <tbody class="table-group-divider" id="resultData">
+
+            </tbody>
+        </table>
+        <div id="paginador">
+            <button id="former">Former</button>
+            <span id="actualPage">1</span>
+            <button id="following">Following</button>
+          </div>
+
+    </div>
+    <!-- Script Js -->
+    <script src="/Frontend Service-security/js/Operational/bill.js"></script>
+    <script src="/Frontend Service-security/js/Features/operation.js"></script>
+    <script src="/Frontend Service-security/js/Features/ajaxFunctions.js"></script>
+    
+ 
+    <script>
+        loadCustomer();
+        loadProduct();
+        loadData();
+        
+
+
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var tabla = document.getElementById('Table');
+      var paginador = document.getElementById('paginador');
+      var formerBtn = document.getElementById('former');
+      var followingBtn = document.getElementById('following');
+      var actualPage = document.getElementById('actualPage');
+    
+      var filasPorPagina = 5;
+      var pagina = 1;
+    
+      // Función para mostrar las filas correspondientes a la página actual
+      function mostrarFilas() {
+        var filas = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+        for (var i = 0; i < filas.length; i++) {
+          if (i >= (pagina - 1) * filasPorPagina && i < pagina * filasPorPagina) {
+            filas[i].style.display = '';
+          } else {
+            filas[i].style.display = 'none';
+          }
+        }
+        actualPage.textContent = pagina;
+      }
+    
+      // Evento para ir a la página former
+      formerBtn.addEventListener('click', function() {
+        if (pagina > 1) {
+          pagina--;
+          mostrarFilas();
+        }
+      });
+    
+      // Evento para ir a la página following
+      followingBtn.addEventListener('click', function() {
+        var filasTotales = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr').length;
+        var paginasTotales = Math.ceil(filasTotales / filasPorPagina);
+        if (pagina < paginasTotales) {
+          pagina++;
+          mostrarFilas();
+        }
+      });
+    
+      mostrarFilas(); // Mostrar las filas iniciales al cargar la página
+    });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <!-- Links  -->
+    <script src="/Frontend Service-security/js/Features/cdn.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+
+
+
+
+        <!-- Modal -->
+        <legend class="Headboard">Product</legend>
+        <script  src="/Frontend Service-security/js/Features/Butonn.js"></script>
+
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="width: 150%; height: 150%; ">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Record</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="clearData();"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div id="inputdata">
+                                <form class="row g-3 needs-validation" novalidate*class="row g-3 needs-validation"
+                                     novalidate>
+                                    <fieldset class="formulario">
+                                        <legend>Product</legend>
+                                        <div class="form-group row">
+
+                                            <label class="col-sm-2 col-form-label">amount</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="amount" id="amount" value=""
+                                                    required placeholder="Ingresar amount">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Ingrese el codigo.
+                                                </div>
+                                                <br>
+                                            </div>
+
+                                            <label class="col-sm-2 col-form-label">code</label>
+                                            <div class="col-sm-10">
+                                                <input type="hidden" name="id" id="id" value="">
+                                                <input type="text" class="form-control" name="code" id="code" value=""
+                                                    required placeholder="Ingresar code">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Ingrese el codigo.
+                                                </div>
+                                                <br>
+                                            </div>
+
+                                            <label class="col-sm-2 col-form-label">name</label>
+                                            <div class="col-sm-10">
+                                                <input type="hidden" name="id" id="id" value="">
+                                                <input type="text" class="form-control" name="name" id="name" value=""
+                                                    required placeholder="Ingresar name">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Ingrese el codigo.
+                                                </div>
+                                                <br>
+                                            </div>
+
+                                            <label class="col-sm-2 col-form-label">price</label>
+                                            <div class="col-sm-10">
+                                               
+                                                <input type="text" class="form-control" name="price" id="price" value=""
+                                                    required placeholder="Ingresar price">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Ingrese el codigo.
+                                                </div>
+                                                <br>
+                                            </div>
+
+                                            <label class="col-sm-2 col-form-label" for="category_id">category:
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="hidden" id="selected_category_id"
+                                                    name="selected_category_id" value="">
+                                                <input type="text" list="category_id" class="form-control"
+                                                    name="category_id" id="category_id">
+
+                                            </div>
+
+                                       
+
+
+                                            <label class="col-sm-2 col-form-label">Estate</label>
+                                            <div class="col-sm-10">
+
+                                                <select class="form-select" id="estate">
+                                                    <option selected>--select--</option>
+                                                    <option value="1">asset</option>
+                                                    <option value="0">idle</option>
+                                                </select>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" name="btnCloced" class="btn btn-secondary" data-bs-dismiss="modal"
+                                onclick="clearData()">Close</button>
+                            <br>
+                            <button name="btnAgregar" class="btn btn-primary" type="button" onclick="save()"
+                                data-bs-dismiss="modal">Agregar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">Name</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Actions</th>
+
+
+                </tr>
+            </thead>
+            <tbody class="table-group-divider" id="resultData">
+
+            </tbody>
+        </table>
+
+    </div>
+    <!-- Script Js -->
+    <script src="/Frontend Service-security/js/Operational/Product.js"></script>
+
+    <script src="/Frontend Service-security/js/Features/ajaxFunctions.js"></script>
+
+
+    <script>
+        loadCategory();
+        loadData();
+
+    </script>
+
+</body>
+
+</html>
